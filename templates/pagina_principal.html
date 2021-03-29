@@ -1,0 +1,239 @@
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Tienda Oline</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</head>
+<body>
+ <!-- menu -->
+ <nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container-fluid justify-content-between">
+    <!-- Left elements -->
+
+    <ul class="navbar-nav d-flex">
+      <li class="nav-item ">
+        <a class="nav-link" href="/">
+          <span> Incio </span>
+        </a>
+      </li>
+      <!-- Brand -->
+      <li class="nav-item ">
+        <a class="nav-link" href="/mujer/">
+          <span> Mujer </span>
+        </a>
+      </li>
+      <li class="nav-item ">
+        <a class="nav-link" href=" /hombre/">
+          
+          <span> Hombre </span>
+        </a>
+      </li>
+
+    </ul>
+    <!-- Left elements -->
+
+    <!-- Center elements -->
+    <ul class="navbar-nav flex-row d-none d-md-flex">
+
+      <a class="navbar-brand me-2 mb-1 d-flex align-items-center" href="/">
+        <img
+          src="{% static 'img/logo.png' %}"
+          height="20"
+          alt=""
+          loading="lazy"
+          style="margin-top: 2px;"
+        />
+      </a>
+      
+    </ul>
+    <!-- Center elements -->
+
+    <!-- Right elements -->
+    <ul class="navbar-nav flex-row">
+      
+      
+      {% if request.user.is_authenticated %}
+      <li class="nav-item me-3 me-lg-1">
+        <a class="nav-link" href="/visualizar/comprar/">
+          <span><i class="fas fa-shopping-bag fa-lg" ></i></span>
+        <!--  <span class="badge rounded-pill badge-notification bg-danger" >2</span>--> 
+        </a>
+      </li>
+      <li class="nav-item me-3 me-lg-1">
+        <a class="nav-link d-sm-flex align-items-sm-center" href="/">
+          <strong class="d-none d-sm-block ms-1">{{user.username}}</strong>
+        </a>
+      </li>
+      <li class="nav-item me-3 me-lg-1">
+        <a class="nav-link d-sm-flex align-items-sm-center" href="/des_logarse/">
+          <strong class="d-none d-sm-block ms-1">Salir</strong>
+        </a>
+      </li>
+      {% else %}
+      <li class="nav-item me-3 me-lg-1">
+        <a class="nav-link d-sm-flex align-items-sm-center" href="/accounts/login/">
+          <strong class="d-none d-sm-block ms-1">Logarse / Registrarse </strong>
+        </a>
+      </li>
+      {% endif %}
+      
+      
+    </ul>
+    <!-- Right elements -->
+  </div>
+</nav>
+ <!-- fin menu -->
+
+<!-- buscador -->
+      <div class="container-fluid">
+        <form  action="/busacr_nombre/{{sexo}}/" method="GET">
+        <div class="input-group my-4 col-6 mx-auto">
+          
+            <input class="form-control py-2 border-right-0 border" type="search" placeholder="Buscar un producto por su nombre" id="example-search-input" name="buscar">
+          </form>
+            <span class="input-group-append">
+                
+                <button class="btn-light btn-outline-primary-light rounded-right" type="submit" value="Submit">
+                    <i class="fas fa-search"></i>
+                </button>
+                
+            </span>
+        </div> 
+      </form>
+      </div>
+    
+<!-- fin buscador -->
+
+<!-- buscador por categorias -->
+      <div class="container-fluid">
+        <div class="row my-4 col-4 mx-auto">
+          <div class="col-sm">
+            <div class="dropdown">
+              <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+                Talla
+              </button>
+              
+              <div class="dropdown-menu">
+                <a class="dropdown-item" href="/busacr/{{sexo}}/talla/1">S</a>
+                <a class="dropdown-item" href="/busacr/{{sexo}}/talla/2">M</a>
+                <a class="dropdown-item" href="/busacr/{{sexo}}/talla/3">L</a>
+                <a class="dropdown-item" href="/busacr/{{sexo}}/talla/4">XL</a>
+                <a class="dropdown-item" href="/busacr/{{sexo}}/talla/5">XXL</a>
+              </div>
+           
+            </div>
+          </div>
+      <div class="col-sm">
+        <div class="dropdown">
+          <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+            Categoria
+          </button>
+          <div class="dropdown-menu">
+            {% for categoria in categorias %}
+            <a class="dropdown-item" href="/busacr/{{sexo}}/categoria/{{categoria.id}}">{{categoria.nombre_categoria}}</a>
+            {%endfor%}
+            
+          </div>
+        </div>
+    </div>
+
+    <div class="col-sm">
+      <div class="dropdown">
+        <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+          Precio
+        </button>
+        <div class="dropdown-menu">
+          <a class="dropdown-item" href="/busacr/{{sexo}}/menos/35">Menos de 35 € </a>
+          <a class="dropdown-item" href="/busacr/{{sexo}}/mas_igual/35">Mas de 35 €</a>
+        </div>
+      </div>
+  </div>
+   
+  </div>
+    </div>
+<!-- fin buscador por categorias -->
+
+
+<!-- lista productos -->
+      <div class="container">
+      
+        
+        <div class="row">
+          {%  for sub_producto in productos %}
+          
+          <div class="col-sm-4">
+            <div class="card">
+              <div class="card-body">
+              
+                    <div class="row justify-content-between py-2">
+                      <h5 class="card-title">{{sub_producto.nombre}}</h5>
+                      {% if sub_producto.desquento_procentaje > 0 %}
+                          <span class=" border rounded-circle bg-danger text-white"> &nbsp;&nbsp;- 20 % &nbsp;&nbsp;</span>
+                      {% endif %}
+                  </div>
+                 
+              
+                  <img class="card-img-top" src="{{sub_producto.get_img}}" alt="sub_producto.ruta_img" width="80" height="250">
+                
+                <p class="card-text  pt-4"> Talla: 
+                  {% if sub_producto.talla == 1 %} 
+                  <strong>S</strong> 
+                  {% elif sub_producto.talla == 2 %} 
+                  <strong>M</strong> 
+                  {% elif sub_producto.talla == 3 %} 
+                  <strong>L</strong> 
+                  {% elif sub_producto.talla == 4 %} 
+                  <strong>XL</strong>
+                  {% elif sub_producto.talla == 5 %} 
+                  <strong>XLL</strong>  
+                  {% endif %} 
+                Color: <strong>{{sub_producto.color}}</strong>  Precio <strong>{{sub_producto.precio}} €</strong>  </p>
+                <p class="card-text  "> Sexo:<strong> 
+                  {% if sub_producto.sexo == 'F' %} 
+                  <strong>Mujer</strong> 
+                  {% elif sub_producto.sexo == 'M' %} 
+                  <strong>Hombre</strong> 
+                  {% endif %}
+                </strong> Categoria:<strong> {{sub_producto.categoria}} </strong>   </p>
+                {% if user.is_authenticated %}
+                <div class="row justify-content-end">
+                  
+                  <a href="/comprar/{{sub_producto.pk}}/" class="btn btn-primary r">Añadir al cesta</a> 
+              </div>
+              {% endif %}
+              </div>
+            </div>
+          </div>
+          {% if forloop.counter|divisibleby:3 == True %}
+             </div>  </br> <div class="row">
+          {% endif %}
+
+       
+
+          {% endfor %}
+        </div>
+     
+     
+        
+        
+
+      </div>
+      <div class="input-group my-4  mx-auto"></div>
+      
+<!-- fin lista productos -->      
+<div class="jumbotron text-center" style="margin-bottom:0; background-color: black;">
+  <p style="margin-bottom:0; color: white;" >Footer</p>
+</div>
+
+
+
+</body>
+</html>

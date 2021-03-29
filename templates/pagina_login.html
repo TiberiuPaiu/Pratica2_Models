@@ -1,0 +1,65 @@
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+      <title>Tienda Oline</title>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+      <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+      <link href="{% static 'css/login.css' %}" rel="stylesheet">
+<div class="sidenav">
+                 <div class="login-main-text">
+                    <div class="text-center">
+                        <img
+                        src=src="{% static 'img/logo.png' %}"
+                        height="40"
+                        alt=""
+                        loading="lazy"
+                    
+                      />
+
+                    <br/>
+                    <a class="nav-link" href="/"><i class="fas fa-fw fa-home"></i>
+                     <span>Pagina Principal</span></a>
+                    <h2>Te damos la bienvenida</h2>
+                    <br/><br/><br/><br/>
+                    <img
+                        src="{% static 'img/login-foto.png' %}"
+                        height="300"
+                        alt=""
+                        loading="lazy"
+                    
+                      />
+                </div> 
+                 </div>
+              </div>
+              <div class="main">
+                 <div class="col-md-6 col-sm-12">
+                     
+                    <div class="login-form">
+                       <form method="POST">
+                           {% csrf_token %}
+                          <div class="form-group">
+                             <label>Nombre usuario</label>
+                             <input type="text" class="form-control" placeholder="Nombre usuario" name="username">
+                          </div>
+                          <div class="form-group">
+                             <label>Contraseña</label>
+                             <input type="password" class="form-control" placeholder="Contraseña" name="password">
+                          </div>
+                          <button type="submit" class="btn btn-primary">Iniciar sesión</button>
+                          <a href="/registrate/">
+                          <button type="button" class="btn btn-primary">Register</button> </a>
+                       </form>
+                    </div>
+                 </div>
+              </div>
+
+
+</body>
+</html>

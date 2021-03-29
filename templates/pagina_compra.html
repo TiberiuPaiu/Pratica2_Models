@@ -1,0 +1,147 @@
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Tienda Oline</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</head>
+<body>
+ <!-- menu -->
+ <nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container-fluid justify-content-between">
+    <!-- Left elements -->
+
+    <ul class="navbar-nav d-flex">
+      <li class="nav-item ">
+        <a class="nav-link" href="/">
+          <span> Incio </span>
+        </a>
+      </li>
+      <!-- Brand -->
+      <li class="nav-item ">
+        <a class="nav-link" href="/mujer/">
+          <span> Mujer </span>
+        </a>
+      </li>
+      <li class="nav-item ">
+        <a class="nav-link" href=" /hombre/">
+          
+          <span> Hombre </span>
+        </a>
+      </li>
+
+    </ul>
+    <!-- Left elements -->
+
+    <!-- Center elements -->
+    <ul class="navbar-nav flex-row d-none d-md-flex">
+
+      <a class="navbar-brand me-2 mb-1 d-flex align-items-center" href="/">
+        <img
+          src="{% static 'img/logo.png' %}"
+          height="20"
+          alt=""
+          loading="lazy"
+          style="margin-top: 2px;"
+        />
+      </a>
+      
+    </ul>
+    <!-- Center elements -->
+
+    <!-- Right elements -->
+    <ul class="navbar-nav flex-row">
+      
+      
+      {% if request.user.is_authenticated %}
+      <li class="nav-item me-3 me-lg-1">
+        <a class="nav-link" href="/visualizar/comprar/">
+            <span><i class="fas fa-shopping-bag fa-lg" ></i></span>
+          <!--  <span class="badge rounded-pill badge-notification bg-danger" >2</span>--> 
+          </a>
+      </li>
+      <li class="nav-item me-3 me-lg-1">
+        <a class="nav-link d-sm-flex align-items-sm-center" href="/">
+          <strong class="d-none d-sm-block ms-1">{{user.username}}</strong>
+        </a>
+      </li>
+      <li class="nav-item me-3 me-lg-1">
+        <a class="nav-link d-sm-flex align-items-sm-center" href="/des_logarse/">
+          <strong class="d-none d-sm-block ms-1">Salir</strong>
+        </a>
+      </li>
+      {% else %}
+      <li class="nav-item me-3 me-lg-1">
+        <a class="nav-link d-sm-flex align-items-sm-center" href="/accounts/login/">
+          <strong class="d-none d-sm-block ms-1">Logarse / Registrarse </strong>
+        </a>
+      </li>
+      {% endif %}
+      
+      
+    </ul>
+    <!-- Right elements -->
+  </div>
+</nav>
+ <!-- fin menu -->
+
+<!-- buscador -->
+      
+    
+<!-- fin buscador -->
+
+
+
+<!-- lista productos -->
+      <div class="container">
+
+        <br> <br> <br>
+      
+      {% if user.is_authenticated %}
+
+      
+           
+          <ur>
+            {%  for producto in compra %}
+                <li> {{producto.get_copra}}</li> 
+                {% endfor %}
+          </ur>
+            
+        </tbody>
+      </table>
+      <div class="row justify-content-end">
+      <p>TOTAL : <strong> {{total}}</strong> €</p></div>
+      <br>  <br>
+        <div class="row justify-content-end">
+                 
+            <a href="#" class="btn btn-primary r">Pagar</a> 
+        </div>
+      {% endif %}
+              
+
+    
+        </div>
+     
+        <br>
+        
+        
+
+      </div>
+      <div class="input-group my-4  mx-auto"></div>
+      <br>  <br>  <br>  <br>  <br>
+<!-- fin lista productos -->      
+<div class="jumbotron text-center" style="margin-bottom:0; background-color: black;">
+  <p style="margin-bottom:0; color: white;" >Footer</p>
+</div>
+
+
+
+</body>
+</html>

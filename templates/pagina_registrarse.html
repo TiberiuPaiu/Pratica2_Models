@@ -1,0 +1,102 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+      <title>Tienda Oline</title>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+      <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+      <link href="{% static 'css/login.css' %}" rel="stylesheet">
+<div class="sidenav">
+                 <div class="login-main-text">
+                    <div class="text-center">
+                        <img
+                        src=src="{% static 'img/logo.png' %}"
+                        height="40"
+                        alt=""
+                        loading="lazy"
+                    
+                      />
+
+                    <br/><a class="nav-link" href="/"><i class="fas fa-fw fa-home"></i>
+                        <span>Pagina Principal</span></a>
+                    <h2>Te damos la bienvenida</h2>
+                    <br/><br/><br/><br/>
+                    <img
+                        src="{% static 'img/login-foto.png' %}"
+                        height="300"
+                        alt=""
+                        loading="lazy"
+                    
+                      />
+                </div> 
+                 </div>
+              </div>
+              <div class="main">
+                 <div class="col-md-8 col-sm-4">
+                    <div class="login-form">
+                        <p class='{{error}}'>{{mensaje}}</p>
+                       <form action="/from_cliente_post/" method="post">
+                        {% csrf_token %}
+                        <div class="form-group">
+                            <label>Nombre de usuario:</label>
+                            <input type="text" class="form-control" placeholder="Nombre de usuario:" name="username">
+                         </div>
+                          <div class="form-group">
+                             <label>Nombre</label>
+                             <input type="text" class="form-control" placeholder="Nombre" name="lastname">
+                          </div>
+                          <div class="form-group">
+                             <label>Apellidos</label>
+                             <input type="text" class="form-control" placeholder="Apellidos" name="firstname">
+                          </div>
+                          <div class="form-group">
+                            <label>Correo electrónico</label>
+                            <input type="text" class="form-control" placeholder="Correo electrónico" name="email">
+                         </div>
+                         <div class="form-group">
+                            <label>Tarjeta de credito</label>
+                            <input type="text" class="form-control" placeholder="Tarjeta de credito" name="trjeta">
+                         </div>
+                          <div class="form-group">
+                            <label>Contraseña</label>
+                            <input type="password" class="form-control" placeholder="Contraseña" name="password">
+                         </div>
+                         <div class="form-group">
+                            <label>¿Qué te interesa más?</label>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="exampleRadios" id="mujer" value="F" checked>
+                                <label class="form-check-label" for="mujer">
+                                    Moda de mujer
+                                </label>
+                              </div>
+                              <div class="form-check">
+                                <input class="form-check-input" type="radio" name="exampleRadios" id="hombre" value="M">
+                                <label class="form-check-label" for="hombre">
+                                    Moda de hombre
+                                </label>
+                              </div>
+                              <div class="form-check disabled">
+                                <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios3" value="T" >
+                                <label class="form-check-label" for="n_preferencia">
+                                    Ninguna preferencia
+                                </label>
+                              </div>
+                         </div>
+                         <br/>
+                         <div class="row justify-content-center">
+                            <button type="submit" class="btn btn-primary">Regístrate</button>
+                        </div>
+                          
+                       </form>
+                    </div>
+                 </div>
+              </div>
+
+
+</body>
+</html>
