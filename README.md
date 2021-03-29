@@ -15,3 +15,5 @@ user: banana
 pass: udl.tibi.8
 
 todos los usuarios tiene la pass :udl.tibi.8 menos el admin 
+
+Python Version:3.8.7.
